@@ -1,0 +1,17 @@
+#root {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+#root > navbar-c {
+  width: 12%;
+}
+
+#root > main {
+  width: 40%;
+}
+
+#root > aside {
+  flex: 1;
+}

@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="public/vulture.svg" />
     <link rel="stylesheet" href="public/modern-normalize.min.css" />
+    <link rel="stylesheet" href="public/css/global.css" />
+    <link rel="stylesheet" href="public/css/users.css" />
     <script src="/src/index.mjs" type="module"></script>
     <title>Moderator Dashboard</title>
   </head>
   <body>
-    <div style="display: flex">
+    <div id="root">
       <navbar-c></navbar-c>
       <main>
         <h1>Utenti</h1>
         <div id="users-list"></div>
       </main>
+      <aside></aside>
     </div>
 
     <script type="module">
@@ -25,8 +28,7 @@
       const users = await getUsers();
       users.forEach((user) => {
         const userComponent = document.createElement('user-c');
-        userComponent.setAttribute('username', user.username);
-        userComponent.setAttribute('type', user.type);
+        userComponent.user = user;
         usersList.appendChild(userComponent);
       });
     </script>

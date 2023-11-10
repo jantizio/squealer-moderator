@@ -3,30 +3,65 @@
     "name": "Alice",
     "surname": "Smith",
     "username": "@alicesmith",
-    "type": "moderator"
+    "type": "moderator",
+    "propic": "https://api.dicebear.com/7.x/lorelei/svg?seed=alicesmith",
+    "firstname": "Alice",
+    "lastname": "Smith",
+    "email": "alice.smith@example.com",
+    "SMM": "@alicesmith",
+    "quota": 100,
+    "subscriptions": ["news", "updates"]
   },
   {
     "name": "Bob",
     "surname": "Johnson",
     "username": "@bobjohnson",
-    "type": "standard"
+    "type": "standard",
+    "propic": "https://api.dicebear.com/7.x/lorelei/svg?seed=bobjohnson",
+    "firstname": "Bob",
+    "lastname": "Johnson",
+    "email": "bob.johnson@example.com",
+    "SMM": "@bobjohnson",
+    "quota": 50,
+    "subscriptions": ["updates"]
   },
   {
     "name": "Charlie",
     "surname": "Brown",
     "username": "@charliebrown",
-    "type": "vip"
+    "type": "professional",
+    "propic": "https://api.dicebear.com/7.x/lorelei/svg?seed=charliebrown",
+    "firstname": "Charlie",
+    "lastname": "Brown",
+    "email": "charlie.brown@example.com",
+    "SMM": "@charliebrown",
+    "quota": 200,
+    "subscriptions": ["news", "updates", "promotions"]
   },
   {
     "name": "David",
     "surname": "Lee",
     "username": "@davidlee",
-    "type": "standard"
+    "type": "standard",
+    "propic": "https://api.dicebear.com/7.x/lorelei/svg?seed=davidlee",
+    "firstname": "David",
+    "lastname": "Lee",
+    "email": "david.lee@example.com",
+    "SMM": "@davidlee",
+    "quota": 75,
+    "subscriptions": ["news"]
   },
   {
     "name": "Eve",
     "surname": "Taylor",
     "username": "@evetaylor",
-    "type": "moderator"
+    "type": "moderator",
+    "propic": "https://api.dicebear.com/7.x/lorelei/svg?seed=evetaylor",
+    "firstname": "Eve",
+    "lastname": "Taylor",
+    "email": "eve.taylor@example.com",
+    "SMM": "@evetaylor",
+    "quota": 150,
+    "subscriptions": ["updates", "promotions"]
   }
 ]
