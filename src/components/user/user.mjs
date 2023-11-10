@@ -7,6 +7,13 @@ class User extends HTMLElement {
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.innerHTML = html;
   }
+
+  connectedCallback() {
+    this.shadowRoot.querySelector('#username').innerText =
+      this.getAttribute('username');
+    this.shadowRoot.querySelector('#type').innerText =
+      this.getAttribute('type');
+  }
 }
 
 customElements.define('user-c', User);

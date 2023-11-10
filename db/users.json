@@ -1,0 +1,32 @@
+[
+  {
+    "name": "Alice",
+    "surname": "Smith",
+    "username": "@alicesmith",
+    "type": "moderator"
+  },
+  {
+    "name": "Bob",
+    "surname": "Johnson",
+    "username": "@bobjohnson",
+    "type": "standard"
+  },
+  {
+    "name": "Charlie",
+    "surname": "Brown",
+    "username": "@charliebrown",
+    "type": "vip"
+  },
+  {
+    "name": "David",
+    "surname": "Lee",
+    "username": "@davidlee",
+    "type": "standard"
+  },
+  {
+    "name": "Eve",
+    "surname": "Taylor",
+    "username": "@evetaylor",
+    "type": "moderator"
+  }
+]

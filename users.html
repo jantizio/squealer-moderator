@@ -13,17 +13,22 @@
       <navbar-c></navbar-c>
       <main>
         <h1>Utenti</h1>
-        <user-c>
-          <p slot="username">@angolo180</p>
-          <p slot="type">standard</p>
-          <p slot="popular">molto popular</p>
-        </user-c>
-        <user-c>
-          <p slot="username">@angolo270</p>
-          <p slot="type">moderator</p>
-          <p slot="popular">molto popular</p>
-        </user-c>
+        <div id="users-list"></div>
       </main>
     </div>
+
+    <script type="module">
+      import { getUsers } from './src/api/users.mjs';
+
+      const usersList = document.querySelector('#users-list');
+
+      const users = await getUsers();
+      users.forEach((user) => {
+        const userComponent = document.createElement('user-c');
+        userComponent.setAttribute('username', user.username);
+        userComponent.setAttribute('type', user.type);
+        usersList.appendChild(userComponent);
+      });
+    </script>
   </body>
 </html>
