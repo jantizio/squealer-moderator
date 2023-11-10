@@ -1,3 +1,38 @@
 #users-list {
   width: 30vw;
 }
+
+#filter-section {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#filter-section h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+#filter-section div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+#filter-section label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+#filter-section input,
+#filter-section select {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}

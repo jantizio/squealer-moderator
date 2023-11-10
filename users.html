@@ -17,7 +17,30 @@
         <h1>Utenti</h1>
         <div id="users-list"></div>
       </main>
-      <aside></aside>
+      <aside>
+        <div id="filter-section">
+          <h2>Filtri</h2>
+          <div>
+            <label for="name-filter">Nome</label>
+            <input type="text" id="name-filter" name="name-filter" />
+          </div>
+          <div>
+            <label for="type-filter">Tipo</label>
+            <select id="type-filter" name="type-filter">
+              <option value="standard">Standard</option>
+              <option value="professionista">Professionista</option>
+              <option value="moderatore">Moderatore</option>
+            </select>
+          </div>
+          <div>
+            <label for="popularity-filter">Popolarità</label>
+            <select id="popularity-filter" name="popularity-filter">
+              <option value="crescente">Crescente</option>
+              <option value="decrescente">Decrescente</option>
+            </select>
+          </div>
+        </div>
+      </aside>
     </div>
 
     <script type="module">
