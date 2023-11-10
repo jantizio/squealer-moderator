@@ -1,13 +1,39 @@
+<link rel="stylesheet" href="public/modern-normalize.min.css" />
 <link rel="stylesheet" href="src/components/usercard/usercard.css" />
 <div class="user-card">
-  <img class="user-card__propic" src="{user.propic}" alt="Profile Picture" />
-  <div class="user-card__info">
-    <h2 class="user-card__username">{user.username}</h2>
-    <p class="user-card__name">{user.firstname} {user.lastname}</p>
-    <p class="user-card__email">{user.email}</p>
-    <p class="user-card__type">{user.type}</p>
-    <p class="user-card__smm">{user.SMM}</p>
-    <p class="user-card__quota">{user.quota}</p>
-    <p class="user-card__subscriptions">{user.subscriptions}</p>
+  <div class="user-card__container">
+    <img class="user-card__propic" src="{user.propic}" alt="Profile Picture" />
+    <div class="user-card__info">
+      <h2 class="user-card__username">{user.username}</h2>
+      <p class="user-card__name">{user.firstname} {user.lastname}</p>
+      <p class="user-card__email">{user.email}</p>
+      <p class="user-card__type">{user.type}</p>
+      <p class="user-card__smm">{user.SMM}</p>
+      <p class="user-card__subscriptions">{user.subscriptions}</p>
+    </div>
+  </div>
+
+  <div class="user-card__block-toggle">
+    <label for="block-toggle">Blocca</label>
+    <input type="checkbox" id="block-toggle" name="block-toggle" />
+  </div>
+
+  <div class="user-card__quota-inputs">
+    <div class="user_card__quota-input-header">
+      <label for="save_button">Quota</label>
+      <button class="user-card__quota-save" name="save_button">Salva</button>
+    </div>
+    <div class="user-card__quota-input">
+      <label for="giorno">Giorno</label>
+      <input type="text" id="giorno" name="giorno" />
+    </div>
+    <div class="user-card__quota-input">
+      <label for="mese">Mese</label>
+      <input type="text" id="mese" name="mese" />
+    </div>
+    <div class="user-card__quota-input">
+      <label for="anno">Anno</label>
+      <input type="text" id="anno" name="anno" />
+    </div>
   </div>
 </div>

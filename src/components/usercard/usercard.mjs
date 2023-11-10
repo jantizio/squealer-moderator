@@ -24,9 +24,8 @@ class Usercard extends HTMLElement {
     shadow.querySelector('.user-card__type').textContent = this._user.type;
     shadow.querySelector('.user-card__smm').textContent = this._user.SMM;
     // TODO: to be fixed, these are not primitive values
-    shadow.querySelector('.user-card__quota').textContent = this._user.quota;
     shadow.querySelector('.user-card__subscriptions').textContent =
-      this._user.subscriptions;
+      this._user.subscriptions.join(', ');
   }
 
   get user() {
