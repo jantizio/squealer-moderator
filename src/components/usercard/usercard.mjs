@@ -74,6 +74,7 @@ class Usercard extends HTMLElement {
     event.preventDefault();
     const blocked = this.shadowRoot.querySelector('#block-toggle').checked;
     this.user.blocked = blocked;
+    //TODO: maybe i need to change the user object of the user component
     changeBlockedStatus(this._user.username, this._user.blocked);
   }
 }
