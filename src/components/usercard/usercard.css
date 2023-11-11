@@ -69,6 +69,13 @@
   margin-bottom: 10px;
 }
 
+.user-card__quota-input input {
+  width: 100px;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
 .user-card__quota-save {
   padding: 5px 10px;
   background-color: #007bff;
