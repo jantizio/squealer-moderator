@@ -14,8 +14,26 @@
       <navbar-c></navbar-c>
       <main>
         <h1>Squeals</h1>
+        <div id="squeals-list"></div>
       </main>
       <aside></aside>
     </div>
+
+    <script type="module">
+      import { getSqueals } from './src/api/squeals.mjs';
+
+      const renderSquealsList = (squeals, container = '#squeals-list') => {
+        const squealsList = document.querySelector(container);
+        squealsList.innerHTML = '';
+        squeals.forEach((squeal) => {
+          const squealComponent = document.createElement('squeal-c');
+          squealComponent.squeal = squeal;
+          squealsList.appendChild(squealComponent);
+        });
+      };
+
+      const squeals = await getSqueals();
+      renderSquealsList(squeals);
+    </script>
   </body>
 </html>
