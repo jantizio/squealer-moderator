@@ -1,0 +1,221 @@
+[
+  {
+    "_id": "64e60f8ca9248667bac4b8a9",
+    "receivers": ["@jantizio", "§sesso"],
+    "author": "@korbello",
+    "body": { "type": "text", "content": "Ciao!!!" },
+    "datetime": "2023-08-23T13:54:20.846Z",
+    "impressions": 17,
+    "positive_reaction": 4,
+    "negative_reaction": 0,
+    "category": ["string"]
+  },
+  {
+    "_id": "64e7168a3e2e9de99a8cf2bc",
+    "receivers": ["@angolo270", "§animali"],
+    "author": "@angolo180",
+    "body": { "type": "text", "content": "Adoro i gatti!" },
+    "datetime": "2023-08-24T08:36:26.980Z",
+    "impressions": 22,
+    "positive_reaction": 4,
+    "negative_reaction": 1,
+    "category": ["public"]
+  },
+  {
+    "_id": "64e7168c3e2e9de99a8cf2be",
+    "receivers": ["@angolo270", "§animali"],
+    "author": "@angolo180",
+    "body": { "type": "text", "content": "Adoro i gatti!" },
+    "datetime": "2023-08-24T08:36:28.286Z",
+    "impressions": 17,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": ["public"]
+  },
+  {
+    "_id": "64e7168c3e2e9de99a8cf2c0",
+    "receivers": ["@angolo270", "§animali"],
+    "author": "@angolo180",
+    "body": { "type": "text", "content": "Adoro i gatti!" },
+    "datetime": "2023-08-24T08:36:28.967Z",
+    "impressions": 17,
+    "positive_reaction": 1,
+    "negative_reaction": 0,
+    "category": ["public"]
+  },
+  {
+    "_id": "64e7168d3e2e9de99a8cf2c2",
+    "receivers": ["@angolo270", "§animali"],
+    "author": "@angolo180",
+    "body": { "type": "text", "content": "Adoro i gatti!" },
+    "datetime": "2023-08-24T08:36:29.622Z",
+    "impressions": 17,
+    "positive_reaction": 3,
+    "negative_reaction": 10,
+    "category": ["public"]
+  },
+  {
+    "_id": "64e7168e3e2e9de99a8cf2c4",
+    "receivers": ["@angolo270", "§animali"],
+    "author": "@angolo180",
+    "body": { "type": "text", "content": "Adoro i gatti!" },
+    "datetime": "2023-08-24T08:36:30.406Z",
+    "impressions": 17,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": ["public"]
+  },
+  {
+    "_id": "64e716af3e2e9de99a8cf2c9",
+    "receivers": ["@angolo30", "§animali"],
+    "author": "@angolo180",
+    "body": { "type": "text", "content": "Viva le mucche di alta montagna" },
+    "datetime": "2023-08-24T08:37:03.035Z",
+    "impressions": 17,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": ["public"]
+  },
+  {
+    "_id": "64e716af3e2e9de99a8cf2cb",
+    "receivers": ["@angolo30", "§animali"],
+    "author": "@angolo180",
+    "body": { "type": "text", "content": "Viva le mucche di alta montagna" },
+    "datetime": "2023-08-24T08:37:03.613Z",
+    "impressions": 17,
+    "positive_reaction": 0,
+    "negative_reaction": 4,
+    "category": ["public"]
+  },
+  {
+    "_id": "64e716d23e2e9de99a8cf2cd",
+    "receivers": ["@angolo30", "§animali", "§leagueoflegends"],
+    "author": "@angolo180",
+    "body": {
+      "type": "text",
+      "content": "come faccio a convivere con delle scimmie?"
+    },
+    "datetime": "2023-08-24T08:37:38.173Z",
+    "impressions": 17,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": ["public"]
+  },
+  {
+    "_id": "64e7188e3e2e9de99a8cf2ed",
+    "receivers": ["§NEWS"],
+    "author": "@squeal_mod1",
+    "body": {
+      "type": "text",
+      "content": "È stato creato il ponte più lungo del mondo!"
+    },
+    "datetime": "2023-08-24T08:45:02.473Z",
+    "impressions": 17,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": ["public"]
+  },
+  {
+    "_id": "64ea25d2fa16b8935ef98e9e",
+    "receivers": ["@angolo180", "§league of legends"],
+    "author": "@korbello",
+    "body": { "type": "text", "content": "string" },
+    "datetime": "2023-08-26T16:12:53.978Z",
+    "impressions": 0,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": ["string"]
+  },
+  {
+    "_id": "64ec65c09e4150d1ec3b3269",
+    "receivers": ["@angolo180"],
+    "author": "@angolo180",
+    "body": {
+      "type": "media",
+      "content": "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwallpapercave.com%2Fwp%2Fwp2668380.jpg&f=1&nofb=1&ipt=0dad2fe20fcf2f5352404506bc4f8202481218cc7eb146b25c787a85ce932b5b&ipo=images"
+    },
+    "datetime": "2023-08-28T04:00:32.573Z",
+    "impressions": 0,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": []
+  },
+  {
+    "_id": "64ec66219e4150d1ec3b326e",
+    "receivers": ["@angolo180", "§animali"],
+    "author": "@angolo180",
+    "body": {
+      "type": "media",
+      "content": "https://drfossums.com/wp-content/uploads/2020/05/black-young-cane-corso-dog-sit-on-green-grass-outdoors-big-dog.jpg"
+    },
+    "datetime": "2023-08-28T04:00:32.573Z",
+    "impressions": 2,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": []
+  },
+  {
+    "_id": "64ec8ca19e4150d1ec3b329d",
+    "receivers": ["@angolo180"],
+    "author": "@angolo180",
+    "body": { "type": "media", "content": "https://www.google.it/" },
+    "datetime": "2023-08-28T04:00:32.573Z",
+    "impressions": 0,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": []
+  },
+  {
+    "_id": "64f889a77ae2b4e85b83d8a6",
+    "receivers": ["§leagueoflegends"],
+    "author": "@angolo180",
+    "body": {
+      "type": "media",
+      "content": "https://site222315.tw.cs.unibo.it/api/media/64f889a77ae2b4e85b83d8a1"
+    },
+    "datetime": "2023-09-06T14:15:30.325Z",
+    "impressions": 0,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": []
+  },
+  {
+    "_id": "650c699cab881138a52c9c26",
+    "receivers": ["@0x0", "#nullpointer"],
+    "author": "@korbello",
+    "body": { "type": "text", "content": "Yo, Mr. @angolo180! come butta?" },
+    "datetime": "2023-09-21T15:48:16.764Z",
+    "impressions": 0,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": ["string"]
+  },
+  {
+    "_id": "652d381b773c267f79e052f3",
+    "receivers": ["@prova"],
+    "author": "@angolo180",
+    "body": {
+      "type": "text",
+      "content": "asdaasjdhaksjdhaksjdhakjsdhakjsdhakjasdaasjdhaksjdhaksjdhakjsdhakjsdhakjasdaasjdhaksjdhaksjdhakjsdha"
+    },
+    "datetime": "2023-10-13T04:00:52.060Z",
+    "impressions": 0,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": []
+  },
+  {
+    "_id": "6535341e54e384fd0710ae9e",
+    "receivers": ["@angolo180"],
+    "author": "@korbello",
+    "body": {
+      "type": "text",
+      "content": "Yo, mr. White. Checkout #lol and §leagueoflegends"
+    },
+    "datetime": "2023-10-19T04:00:46.398Z",
+    "impressions": 0,
+    "positive_reaction": 0,
+    "negative_reaction": 0,
+    "category": []
+  }
+]

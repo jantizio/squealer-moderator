@@ -1,0 +1,44 @@
+[
+  {
+    "_id": "64e388dec21def23fb3277ab",
+    "name": "§RANDOM_100",
+    "description": "100 squeal random",
+    "type": "public"
+  },
+  {
+    "_id": "64e38946c21def23fb3277ae",
+    "name": "§TRENDING",
+    "description": "squeals più in voga",
+    "type": "public"
+  },
+  {
+    "_id": "64e38980c21def23fb3277b2",
+    "name": "§NEWS",
+    "description": "notizie del mondo",
+    "type": "public"
+  },
+  {
+    "_id": "64e389a0c21def23fb3277b4",
+    "name": "§RANDOM_ITALY",
+    "description": "squeal random in italia",
+    "type": "public"
+  },
+  {
+    "_id": "64e38a57c21def23fb3277b6",
+    "name": "§leagueoflegends",
+    "description": "canale dedicato al gioco league of legends",
+    "type": "public"
+  },
+  {
+    "_id": "64e38a77c21def23fb3277b8",
+    "name": "§amicidelpino",
+    "description": "gruppo di amici",
+    "type": "private"
+  },
+  {
+    "_id": "64e716473e2e9de99a8cf2b7",
+    "name": "§animali",
+    "description": "canale dedicato alla passione per gli animali più belli del mondo",
+    "type": "public"
+  }
+]
