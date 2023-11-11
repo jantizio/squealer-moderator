@@ -1,4 +1,4 @@
-import { changeUserQuota } from '../../api/users.mjs';
+import { changeBlockedStatus, changeUserQuota } from '../../api/users.mjs';
 import { importHtml } from '../../utils/htmlImporter.mjs';
 const html = await importHtml('usercard/usercard.html');
 
@@ -12,6 +12,9 @@ class Usercard extends HTMLElement {
     shadow
       .querySelector('.user-card__quota-save')
       .addEventListener('click', this.#saveQuota.bind(this));
+    shadow
+      .querySelector('#block-toggle')
+      .addEventListener('change', this.#toggleBlocked.bind(this));
   }
 
   connectedCallback() {
@@ -39,6 +42,8 @@ class Usercard extends HTMLElement {
     shadow.querySelector('#giorno').value = this._user.quota.maxD;
     shadow.querySelector('#settimana').value = this._user.quota.maxW;
     shadow.querySelector('#mese').value = this._user.quota.maxM;
+
+    shadow.querySelector('#block-toggle').checked = this._user.blocked;
   }
 
   get user() {
@@ -57,6 +62,13 @@ class Usercard extends HTMLElement {
     const maxM = shadow.querySelector('#mese').value;
     this._user.quota = { ...this._user.quota, maxD, maxW, maxM };
     changeUserQuota(this._user.username, this._user.quota);
+  }
+
+  #toggleBlocked(event) {
+    event.preventDefault();
+    const blocked = this.shadowRoot.querySelector('#block-toggle').checked;
+    this._user.blocked = blocked;
+    changeBlockedStatus(this._user.username, this._user.blocked);
   }
 }
 

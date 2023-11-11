@@ -9,3 +9,9 @@ export async function changeUserQuota(username, quota) {
   const user = users.find((user) => user.username === username);
   user.quota = quota;
 }
+
+export async function changeBlockedStatus(username, blocked) {
+  const users = await getUsers();
+  const user = users.find((user) => user.username === username);
+  user.blocked = blocked;
+}

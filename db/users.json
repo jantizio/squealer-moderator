@@ -16,7 +16,8 @@
       "maxW": 500,
       "maxM": 1000
     },
-    "subscriptions": ["§leagueoflegends", "§leagueoflegends"]
+    "subscriptions": ["§leagueoflegends", "§leagueoflegends"],
+    "blocked": false
   },
   {
     "username": "@jantizio",
@@ -35,7 +36,8 @@
       "maxW": 500,
       "maxM": 1000
     },
-    "subscriptions": []
+    "subscriptions": [],
+    "blocked": true
   },
   {
     "username": "@angolo270",
@@ -54,7 +56,8 @@
       "maxW": 500,
       "maxM": 1000
     },
-    "subscriptions": []
+    "subscriptions": [],
+    "blocked": false
   },
   {
     "username": "@angolo360",
@@ -73,6 +76,7 @@
       "maxW": 500,
       "maxM": 1000
     },
-    "subscriptions": []
+    "subscriptions": [],
+    "blocked": false
   }
 ]
