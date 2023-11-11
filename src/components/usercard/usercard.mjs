@@ -1,3 +1,4 @@
+import { changeUserQuota } from '../../api/users.mjs';
 import { importHtml } from '../../utils/htmlImporter.mjs';
 const html = await importHtml('usercard/usercard.html');
 
@@ -8,6 +9,9 @@ class Usercard extends HTMLElement {
     shadow.innerHTML = html;
 
     this._user = {};
+    shadow
+      .querySelector('.user-card__quota-save')
+      .addEventListener('click', this.#saveQuota.bind(this));
   }
 
   connectedCallback() {
@@ -43,6 +47,16 @@ class Usercard extends HTMLElement {
 
   set user(user) {
     this._user = user;
+  }
+
+  #saveQuota(event) {
+    event.preventDefault();
+    const shadow = this.shadowRoot;
+    const maxD = shadow.querySelector('#giorno').value;
+    const maxW = shadow.querySelector('#settimana').value;
+    const maxM = shadow.querySelector('#mese').value;
+    this._user.quota = { ...this._user.quota, maxD, maxW, maxM };
+    changeUserQuota(this._user.username, this._user.quota);
   }
 }
 

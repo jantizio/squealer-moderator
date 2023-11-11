@@ -57,10 +57,6 @@
   padding-top: 10px;
 }
 
-.user-card__quota-inputs > * > * {
-  margin-right: 0.3rem;
-}
-
 .user_card__quota-input-header {
   width: 100%;
 }
@@ -68,6 +64,8 @@
 .user-card__quota-input {
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  gap: 5px;
   margin-bottom: 10px;
 }
 
