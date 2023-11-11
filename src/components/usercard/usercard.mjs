@@ -18,6 +18,19 @@ class Usercard extends HTMLElement {
   }
 
   connectedCallback() {
+    this.render();
+  }
+
+  get user() {
+    return this._user;
+  }
+
+  set user(user) {
+    this._user = user;
+    this.render();
+  }
+
+  render() {
     const shadow = this.shadowRoot;
     shadow
       .querySelector('.user-card__propic')
@@ -46,28 +59,20 @@ class Usercard extends HTMLElement {
     shadow.querySelector('#block-toggle').checked = this._user.blocked;
   }
 
-  get user() {
-    return this._user;
-  }
-
-  set user(user) {
-    this._user = user;
-  }
-
   #saveQuota(event) {
     event.preventDefault();
     const shadow = this.shadowRoot;
     const maxD = shadow.querySelector('#giorno').value;
     const maxW = shadow.querySelector('#settimana').value;
     const maxM = shadow.querySelector('#mese').value;
-    this._user.quota = { ...this._user.quota, maxD, maxW, maxM };
+    this.user.quota = { ...this._user.quota, maxD, maxW, maxM };
     changeUserQuota(this._user.username, this._user.quota);
   }
 
   #toggleBlocked(event) {
     event.preventDefault();
     const blocked = this.shadowRoot.querySelector('#block-toggle').checked;
-    this._user.blocked = blocked;
+    this.user.blocked = blocked;
     changeBlockedStatus(this._user.username, this._user.blocked);
   }
 }

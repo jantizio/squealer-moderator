@@ -22,9 +22,7 @@ class User extends HTMLElement {
   }
 
   connectedCallback() {
-    this.shadowRoot.querySelector('#username').textContent =
-      this._user.username;
-    this.shadowRoot.querySelector('#type').textContent = this._user.type;
+    this.render();
   }
 
   get user() {
@@ -33,6 +31,14 @@ class User extends HTMLElement {
 
   set user(user) {
     this._user = user;
+    this.render();
+  }
+
+  render() {
+    const { username, type } = this._user;
+
+    this.shadowRoot.querySelector('#username').textContent = username;
+    this.shadowRoot.querySelector('#type').textContent = type;
   }
 }
 
