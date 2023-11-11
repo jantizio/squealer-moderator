@@ -14,8 +14,26 @@
       <navbar-c></navbar-c>
       <main>
         <h1>Canali</h1>
+        <div id="channels-list"></div>
       </main>
       <aside></aside>
     </div>
+
+    <script type="module">
+      import { getChannels } from './src/api/channels.mjs';
+
+      const renderChannelsList = (channels, container = '#channels-list') => {
+        const channelsList = document.querySelector(container);
+        channelsList.innerHTML = '';
+        channels.forEach((channel) => {
+          const channelComponent = document.createElement('channel-c');
+          channelComponent.channel = channel;
+          channelsList.appendChild(channelComponent);
+        });
+      };
+
+      const channels = await getChannels();
+      renderChannelsList(channels);
+    </script>
   </body>
 </html>
