@@ -5,7 +5,7 @@
     "email": "angolo180@mail.com",
     "firstname": "Angolo",
     "lastname": "Piatto",
-    "type": "standard",
+    "type": "professional",
     "SMM": "@korbello",
     "verified": false,
     "quota": {
@@ -65,7 +65,7 @@
     "email": "angolo360@mail.com",
     "firstname": "Angolo",
     "lastname": "Giro",
-    "type": "standard",
+    "type": "moderator",
     "SMM": null,
     "verified": false,
     "quota": {

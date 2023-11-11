@@ -1,6 +1,17 @@
-export async function getUsers() {
+export async function getUsers(
+  username = undefined,
+  type = undefined,
+  popularity = undefined
+) {
   const response = await fetch('../../db/users.json');
   const users = await response.json();
+  if (username) {
+    return users.filter((user) => user.username.includes(username));
+  }
+  if (type) {
+    return users.filter((user) => user.type === type);
+  }
+
   return users;
 }
 
