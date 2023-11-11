@@ -45,12 +45,13 @@ class Usercard extends HTMLElement {
 
     if (this._user.SMM)
       shadow.querySelector('.user-card__smm').textContent = this._user.SMM;
-    else shadow.querySelector('.user-card__smm').remove();
+    else shadow.querySelector('.user-card__smm').classList.add('hidden');
 
     if (this._user.subscriptions.length > 0)
       shadow.querySelector('.user-card__subscriptions').textContent =
         this._user.subscriptions.join(', ');
-    else shadow.querySelector('.user-card__subscriptions').remove();
+    else
+      shadow.querySelector('.user-card__subscriptions').classList.add('hidden');
 
     shadow.querySelector('#giorno').value = this._user.quota.maxD;
     shadow.querySelector('#settimana').value = this._user.quota.maxW;
