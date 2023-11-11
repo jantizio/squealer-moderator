@@ -3,53 +3,40 @@ header {
   flex-direction: column;
   /* justify-content: space-between; */
   align-items: center;
+  padding: 20px;
+  background-color: #f8f9fa;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   height: 100vh;
-  background-color: #333;
-  color: #fff;
+  gap: 5rem;
 }
 
-header div a {
+header #logo a {
   display: flex;
-  flex-direction: column;
   align-items: center;
-  margin-top: 20px;
+  text-decoration: none;
+  color: #333;
 }
 
-header div img {
+header #logo img {
   height: 50px;
-  width: 50px;
+  margin-right: 10px;
 }
 
-header div span {
-  font-size: 1.2rem;
-  margin-top: 10px;
-  text-align: center;
-}
-
-header nav {
+header nav ul {
+  list-style: none;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-top: 50px;
-}
-
-header ul {
-  list-style: none;
+  gap: 2rem;
   padding: 0;
   margin: 0;
 }
 
-header li {
-  margin-bottom: 1.5em;
+header nav ul li a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 600;
 }
 
-header a {
-  text-decoration: none;
-  color: #fff;
-  font-size: 1.2rem;
-  /* transition: all 0.3s ease-in-out; */
+header nav ul li a:hover {
+  color: #007bff;
 }
-/* 
-header a:hover {
-  transform: scale(1.1);
-} */
