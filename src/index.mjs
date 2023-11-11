@@ -5,3 +5,5 @@ import {} from './components/usercard/usercard.mjs';
 
 import {} from './components/squeal/squeal.mjs';
 // import {} from './components/squealcard/squealcard.mjs';
+
+import {} from './components/channel/channel.mjs';
