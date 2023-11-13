@@ -31,33 +31,45 @@ class Usercard extends HTMLElement {
   }
 
   render() {
+    // if the object is not initialized, don't render
+    if (Object.keys(this._user).length === 0) return;
+
+    const {
+      username,
+      type,
+      propic,
+      firstname,
+      lastname,
+      email,
+      SMM,
+      subscriptions,
+      quota,
+      blocked,
+    } = this._user;
+
     const shadow = this.shadowRoot;
-    shadow
-      .querySelector('.user-card__propic')
-      .setAttribute('src', this._user.propic);
-    shadow.querySelector('.user-card__username').textContent =
-      this._user.username;
+    shadow.querySelector('.user-card__propic').setAttribute('src', propic);
+    shadow.querySelector('.user-card__username').textContent = username;
     shadow.querySelector(
       '.user-card__name'
-    ).textContent = `${this._user.firstname} ${this._user.lastname}`;
-    shadow.querySelector('.user-card__email').textContent = this._user.email;
-    shadow.querySelector('.user-card__type').textContent = this._user.type;
+    ).textContent = `${firstname} ${lastname}`;
+    shadow.querySelector('.user-card__email').textContent = email;
+    shadow.querySelector('.user-card__type').textContent = type;
 
-    if (this._user.SMM)
-      shadow.querySelector('.user-card__smm').textContent = this._user.SMM;
+    if (SMM) shadow.querySelector('.user-card__smm').textContent = SMM;
     else shadow.querySelector('.user-card__smm').classList.add('hidden');
 
-    if (this._user.subscriptions.length > 0)
+    if (subscriptions.length > 0)
       shadow.querySelector('.user-card__subscriptions').textContent =
-        this._user.subscriptions.join(', ');
+        subscriptions.join(', ');
     else
       shadow.querySelector('.user-card__subscriptions').classList.add('hidden');
 
-    shadow.querySelector('#giorno').value = this._user.quota.maxD;
-    shadow.querySelector('#settimana').value = this._user.quota.maxW;
-    shadow.querySelector('#mese').value = this._user.quota.maxM;
+    shadow.querySelector('#giorno').value = quota.maxD;
+    shadow.querySelector('#settimana').value = quota.maxW;
+    shadow.querySelector('#mese').value = quota.maxM;
 
-    shadow.querySelector('#block-toggle').checked = this._user.blocked;
+    shadow.querySelector('#block-toggle').checked = blocked;
   }
 
   #saveQuota(event) {

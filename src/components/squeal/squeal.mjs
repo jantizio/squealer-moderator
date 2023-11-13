@@ -24,6 +24,8 @@ class Squeal extends HTMLElement {
   }
 
   render() {
+    // if the object is not initialized, don't render
+    if (Object.keys(this._squeal).length === 0) return;
     const { author, datetime, receivers } = this._squeal;
 
     this.shadowRoot.querySelector('#author').textContent = author;

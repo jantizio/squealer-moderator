@@ -35,6 +35,8 @@ class User extends HTMLElement {
   }
 
   render() {
+    // if the object is not initialized, don't render
+    if (Object.keys(this._user).length === 0) return;
     const { username, type } = this._user;
 
     this.shadowRoot.querySelector('#username').textContent = username;

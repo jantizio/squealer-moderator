@@ -24,6 +24,8 @@ class Channel extends HTMLElement {
   }
 
   render() {
+    // if the object is not initialized, don't render
+    if (Object.keys(this._channel).length === 0) return;
     this.shadowRoot.querySelector('#name').textContent = this._channel.name;
   }
 }
