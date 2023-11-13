@@ -6,7 +6,6 @@
     <link rel="icon" type="image/svg+xml" href="public/vulture.svg" />
     <link rel="stylesheet" href="public/modern-normalize.min.css" />
     <link rel="stylesheet" href="public/css/global.css" />
-    <script src="/src/index.mjs" type="module"></script>
     <title>Moderator Dashboard</title>
   </head>
   <body>
@@ -21,6 +20,8 @@
 
     <script type="module">
       import { getChannels } from './src/api/channels.mjs';
+      import {} from './src/components/navbar/navbar.mjs';
+      import {} from './src/components/channel/channel.mjs';
 
       const renderChannelsList = (channels, container = '#channels-list') => {
         const channelsList = document.querySelector(container);
