@@ -3,12 +3,17 @@ import { importHtml } from '../../utils/htmlImporter.mjs';
 const html = await importHtml('usercard/usercard.html');
 
 class Usercard extends HTMLElement {
+  #user;
+  #userElement;
+
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.innerHTML = html;
 
-    this._user = {};
+    this.user = {};
+    this.userElement = undefined;
+
     shadow
       .querySelector('.user-card__quota-save')
       .addEventListener('click', this.#saveQuota.bind(this));
@@ -22,17 +27,22 @@ class Usercard extends HTMLElement {
   }
 
   get user() {
-    return this._user;
+    return this.#user;
   }
 
   set user(user) {
-    this._user = user;
+    this.#user = user;
+    if (this.#userElement) this.#userElement.user = this.user;
     this.render();
+  }
+
+  set userElement(userElement) {
+    this.#userElement = userElement;
   }
 
   render() {
     // if the object is not initialized, don't render
-    if (Object.keys(this._user).length === 0) return;
+    if (Object.keys(this.user).length === 0) return;
 
     const {
       username,
@@ -45,7 +55,7 @@ class Usercard extends HTMLElement {
       subscriptions,
       quota,
       blocked,
-    } = this._user;
+    } = this.user;
 
     const shadow = this.shadowRoot;
     shadow.querySelector('.user-card__propic').setAttribute('src', propic);
@@ -75,19 +85,18 @@ class Usercard extends HTMLElement {
   #saveQuota(event) {
     event.preventDefault();
     const shadow = this.shadowRoot;
-    const maxD = shadow.querySelector('#giorno').value;
-    const maxW = shadow.querySelector('#settimana').value;
-    const maxM = shadow.querySelector('#mese').value;
-    this.user.quota = { ...this._user.quota, maxD, maxW, maxM };
-    changeUserQuota(this._user.username, this._user.quota);
+    const maxD = Number(shadow.querySelector('#giorno').value);
+    const maxW = Number(shadow.querySelector('#settimana').value);
+    const maxM = Number(shadow.querySelector('#mese').value);
+    this.user.quota = { ...this.user.quota, maxD, maxW, maxM };
+    changeUserQuota(this.user.username, this.user.quota);
   }
 
   #toggleBlocked(event) {
     event.preventDefault();
     const blocked = this.shadowRoot.querySelector('#block-toggle').checked;
-    this.user.blocked = blocked;
-    //TODO: maybe i need to change the user object of the user component
-    changeBlockedStatus(this._user.username, this._user.blocked);
+    this.user = { ...this.user, blocked };
+    changeBlockedStatus(this.user.username, this.user.blocked);
   }
 }
 

@@ -2,12 +2,14 @@ import { importHtml } from '../../utils/htmlImporter.mjs';
 const html = await importHtml('channel/channel.html');
 
 class Channel extends HTMLElement {
+  #channel;
+
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.innerHTML = html;
 
-    this._channel = {};
+    this.channel = {};
   }
 
   connectedCallback() {
@@ -15,18 +17,18 @@ class Channel extends HTMLElement {
   }
 
   set channel(channel) {
-    this._channel = channel;
+    this.#channel = channel;
     this.render();
   }
 
   get channel() {
-    return this._channel;
+    return this.#channel;
   }
 
   render() {
     // if the object is not initialized, don't render
-    if (Object.keys(this._channel).length === 0) return;
-    this.shadowRoot.querySelector('#name').textContent = this._channel.name;
+    if (Object.keys(this.channel).length === 0) return;
+    this.shadowRoot.querySelector('#name').textContent = this.channel.name;
   }
 }
 

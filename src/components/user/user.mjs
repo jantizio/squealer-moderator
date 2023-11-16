@@ -2,22 +2,23 @@ import { importHtml } from '../../utils/htmlImporter.mjs';
 const html = await importHtml('user/user.html');
 
 class User extends HTMLElement {
+  #user;
+
   constructor() {
     super();
     const shadow = this.attachShadow({ mode: 'open' });
     shadow.innerHTML = html;
 
-    this._user = {};
+    this.user = {};
 
     shadow.querySelector('.container').addEventListener('click', () => {
       const aside = document.querySelector('aside');
       const existingCard = aside.querySelector('usercard-c');
-      if (existingCard) {
-        existingCard.remove();
-      }
+      if (existingCard) existingCard.remove();
       const newCard = document.createElement('usercard-c');
-      newCard.user = this._user;
       aside.appendChild(newCard);
+      newCard.user = this.user;
+      newCard.userElement = this;
     });
   }
 
@@ -26,18 +27,18 @@ class User extends HTMLElement {
   }
 
   get user() {
-    return this._user;
+    return this.#user;
   }
 
   set user(user) {
-    this._user = user;
+    this.#user = user;
     this.render();
   }
 
   render() {
     // if the object is not initialized, don't render
-    if (Object.keys(this._user).length === 0) return;
-    const { username, type } = this._user;
+    if (Object.keys(this.user).length === 0) return;
+    const { username, type } = this.user;
 
     this.shadowRoot.querySelector('#username').textContent = username;
     this.shadowRoot.querySelector('#type').textContent = type;
