@@ -45,6 +45,7 @@
 
     <script type="module">
       import { getUsers } from './src/api/users.mjs';
+      import { debounce } from './src/utils/debounce.mjs';
       import {} from './src/components/navbar/navbar.mjs';
       import {} from './src/components/user/user.mjs';
       import {} from './src/components/usercard/usercard.mjs';
@@ -67,17 +68,18 @@
       // TODO: implement popularity filter
       const popularityFilter = document.querySelector('#popularity-filter');
 
-      nameFilter.addEventListener('input', async () => {
-        const name = nameFilter.value;
+      nameFilter.addEventListener(
+        'input',
+        debounce(async (event) => {
+          const name = event.target.value;
+          const users = await getUsers(name);
 
-        const users = await getUsers(name);
-        console.log(users);
+          renderUserList(users);
+        })
+      );
 
-        renderUserList(users);
-      });
-
-      typeFilter.addEventListener('change', async () => {
-        let type = typeFilter.value;
+      typeFilter.addEventListener('change', async (event) => {
+        let type = event.target.value;
         if (type === 'qualunque') {
           type = undefined;
         }

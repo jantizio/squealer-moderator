@@ -1,12 +1,24 @@
-export async function getSqueals(author = undefined, receivers = undefined) {
+export async function getSqueals(
+  author = undefined,
+  receivers = undefined,
+  date = undefined
+) {
   const response = await fetch('../../db/squeals.json');
   const squeals = await response.json();
 
   if (author) {
-    return squeals.filter((squeal) => squeal.author === author);
+    return squeals.filter((squeal) => squeal.author.includes(author));
   }
   if (receivers) {
-    return squeals.filter((squeal) => squeal.receivers.includes(receivers));
+    return squeals.filter(
+      (squeal) =>
+        squeal.receivers.filter((receiver) => receiver.includes(receivers))
+          .length > 0
+    );
+  }
+
+  if (date) {
+    return squeals.filter((squeal) => new Date(squeal.datetime) >= date);
   }
   return squeals;
 }

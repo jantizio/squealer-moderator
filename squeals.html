@@ -6,6 +6,7 @@
     <link rel="icon" type="image/svg+xml" href="public/vulture.svg" />
     <link rel="stylesheet" href="public/modern-normalize.min.css" />
     <link rel="stylesheet" href="public/css/global.css" />
+    <link rel="stylesheet" href="public/css/squeals.css" />
     <title>Moderator Dashboard</title>
   </head>
   <body>
@@ -15,11 +16,28 @@
         <h1>Squeals</h1>
         <div id="squeals-list"></div>
       </main>
-      <aside></aside>
+      <aside>
+        <div id="filter-section">
+          <h2>Filtri</h2>
+          <div>
+            <label for="author-filter">Mittente</label>
+            <input type="text" id="author-filter" />
+          </div>
+          <div>
+            <label for="date-filter">Data</label>
+            <input type="date" id="date-filter" />
+          </div>
+          <div>
+            <label for="receivers-filter">Destinatario</label>
+            <input type="text" id="receivers-filter" />
+          </div>
+        </div>
+      </aside>
     </div>
 
     <script type="module">
       import { getSqueals } from './src/api/squeals.mjs';
+      import { debounce } from './src/utils/debounce.mjs';
       import {} from './src/components/navbar/navbar.mjs';
       import {} from './src/components/squeal/squeal.mjs';
       import {} from './src/components/squealcard/squealcard.mjs';
@@ -36,6 +54,37 @@
 
       const squeals = await getSqueals();
       renderSquealsList(squeals);
+
+      const authorFilter = document.querySelector('#author-filter');
+      const dateFilter = document.querySelector('#date-filter');
+      const receiversFilter = document.querySelector('#receivers-filter');
+
+      authorFilter.addEventListener(
+        'input',
+        debounce(async (event) => {
+          const author = event.target.value;
+          const squeals = await getSqueals(author);
+          console.log(author);
+
+          renderSquealsList(squeals);
+        })
+      );
+
+      dateFilter.addEventListener('change', async (event) => {
+        const date = new Date(event.target.value);
+        const squeals = await getSqueals(undefined, undefined, date);
+        renderSquealsList(squeals);
+      });
+
+      receiversFilter.addEventListener(
+        'input',
+        debounce(async (event) => {
+          const receivers = event.target.value;
+          const squeals = await getSqueals(undefined, receivers);
+
+          renderSquealsList(squeals);
+        })
+      );
     </script>
   </body>
 </html>
