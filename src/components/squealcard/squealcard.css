@@ -1,12 +1,15 @@
-/* TODO: css is kinda ugly */
 .squeal-card {
-  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  margin: 10px;
   border: 1px solid #ddd;
   border-radius: 5px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  margin: 10px;
-  padding: 20px;
-  font-family: Arial, sans-serif;
+}
+
+.squeal-card__container {
+  margin-bottom: 20px;
 }
 
 .squeal-card__author {
@@ -16,29 +19,70 @@
 }
 
 .squeal-card__receivers,
-.squeal-card__datetime {
+.squeal-card__datetime,
+.squeal-card__body,
+.squeal-card__stats > p,
+.squeal-card__category {
   font-size: 14px;
-  color: #888;
-  margin-bottom: 10px;
-}
-
-.squeal-card__body {
-  font-size: 16px;
-  margin-bottom: 20px;
+  color: #666;
+  margin: 0 0 10px 0;
 }
 
 .squeal-card__stats {
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-around;
 }
 
-.squeal-card__stats p {
-  margin: 0;
+.squeal-card__add-receiver,
+.squeal-card__change-reactions {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #ddd;
+  margin-top: 10px;
+  padding-top: 10px;
 }
 
-.squeal-card__category {
-  font-size: 14px;
-  color: #333;
-  margin-bottom: 10px;
+.squeal-card__receiver-input {
+  display: flex;
+  margin-top: 5px;
+  gap: 20px;
+}
+.squeal-card__receiver-input > input {
+  flex-grow: 1;
+}
+
+input {
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  max-width: 60%;
+}
+.change-reactions__inputs {
+  display: flex;
+  gap: 10px;
+}
+
+.add-receiver__button,
+.change-reactions__button {
+  padding: 5px 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-receiver__button:hover,
+.change-reactions__button:hover {
+  background-color: #0056b3;
+}
+
+.squeal-card__rection-input {
+  margin-top: 10px;
+}
+
+.change-reactions__error,
+.add-receiver__error {
+  color: red;
+  margin-top: 5px;
 }

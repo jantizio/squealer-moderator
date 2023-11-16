@@ -10,3 +10,22 @@ export async function getSqueals(author = undefined, receivers = undefined) {
   }
   return squeals;
 }
+
+export async function addReceiver(squealId, receiver) {
+  const squeals = await getSqueals();
+
+  const squeal = squeals.find((squeal) => squeal.id === squealId);
+  squeal.receivers.push(receiver);
+
+  return squeal;
+}
+
+export async function changeReactions(squealId, positive, negative) {
+  const squeals = await getSqueals();
+
+  const squeal = squeals.find((squeal) => squeal.id === squealId);
+  squeal.positive_reaction = positive;
+  squeal.negative_reaction = negative;
+
+  return squeal;
+}

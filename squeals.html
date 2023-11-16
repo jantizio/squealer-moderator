@@ -22,15 +22,15 @@
       import { getSqueals } from './src/api/squeals.mjs';
       import {} from './src/components/navbar/navbar.mjs';
       import {} from './src/components/squeal/squeal.mjs';
-      
+      import {} from './src/components/squealcard/squealcard.mjs';
 
       const renderSquealsList = (squeals, container = '#squeals-list') => {
         const squealsList = document.querySelector(container);
         squealsList.innerHTML = '';
         squeals.forEach((squeal) => {
           const squealComponent = document.createElement('squeal-c');
-          squealComponent.squeal = squeal;
           squealsList.appendChild(squealComponent);
+          squealComponent.squeal = squeal;
         });
       };
 

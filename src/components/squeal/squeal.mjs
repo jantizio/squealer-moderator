@@ -8,6 +8,16 @@ class Squeal extends HTMLElement {
     shadow.innerHTML = html;
 
     this._squeal = {};
+
+    shadow.querySelector('.container').addEventListener('click', () => {
+      const aside = document.querySelector('aside');
+      const existingCard = aside.querySelector('squealcard-c');
+      if (existingCard) existingCard.remove();
+      const newCard = document.createElement('squealcard-c');
+      aside.appendChild(newCard);
+      newCard.squeal = this._squeal;
+      newCard.squealElement = this;
+    });
   }
 
   connectedCallback() {

@@ -1,14 +1,46 @@
 <link rel="stylesheet" href="public/modern-normalize.min.css" />
 <link rel="stylesheet" href="src/components/squealcard/squealcard.css" />
 <div class="squeal-card">
-  <h2 class="squeal-card__author">{{author}}</h2>
-  <p class="squeal-card__receivers">{{receivers}}</p>
-  <p class="squeal-card__datetime">{{datetime}}</p>
-  <p class="squeal-card__body">{{body}}</p>
-  <div class="squeal-card__stats">
-    <p id="impressions">Impressions: {{impressions}}</p>
-    <p id="positive">Positive reactions: {{positive_reaction}}</p>
-    <p id="negative">Negative reactions: {{negative_reaction}}</p>
+  <div class="squeal-card__container">
+    <h2 class="squeal-card__author">{{author}}</h2>
+    <p class="squeal-card__receivers">{{receivers}}</p>
+    <p class="squeal-card__datetime">{{datetime}}</p>
+    <p class="squeal-card__body">{{body}}</p>
+    <div class="squeal-card__stats">
+      <p id="impressions">Impressions: {{impressions}}</p>
+      <p id="positive">Positive reactions: {{positive_reaction}}</p>
+      <p id="negative">Negative reactions: {{negative_reaction}}</p>
+    </div>
+    <p class="squeal-card__category"></p>
   </div>
-  <div class="squeal-card__category"></div>
+
+  <div class="squeal-card__add-receiver">
+    <label for="receiver">Aggiungi Destinatario</label>
+    <div class="squeal-card__receiver-input">
+      <input type="text" id="receiver" />
+      <button class="add-receiver__button">+</button>
+    </div>
+    <span class="add-receiver__error"></span>
+  </div>
+
+  <div class="squeal-card__change-reactions">
+    <div class="change-reactions__header">
+      <label class="change-reactions__title" for="save_button">
+        Cambia reazioni
+      </label>
+      <button class="change-reactions__button" name="save_button">Save</button>
+    </div>
+    <div class="change-reactions__inputs">
+      <div class="squeal-card__rection-input">
+        <label for="positive_input">Positive</label>
+        <input type="number" id="positive_input" />
+      </div>
+
+      <div class="squeal-card__rection-input">
+        <label for="negative_input">Negative</label>
+        <input type="number" id="negative_input" />
+      </div>
+    </div>
+    <span class="change-reactions__error"></span>
+  </div>
 </div>
