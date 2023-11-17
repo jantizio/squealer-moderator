@@ -1,3 +1,7 @@
+import {
+  changeChannelDescription,
+  deleteChannel,
+} from '../../api/channels.mjs';
 import { importHtml } from '../../utils/htmlImporter.mjs';
 const html = await importHtml('channelcard/channelcard.html');
 
@@ -12,6 +16,14 @@ class Channelcard extends HTMLElement {
 
     this.channel = {};
     this.channelElement = undefined;
+
+    shadow
+      .querySelector('.channel-card__description-save')
+      .addEventListener('click', this.#changeDescription.bind(this));
+
+    shadow
+      .querySelector('.channel-card__delete')
+      .addEventListener('click', this.#deleteChannel.bind(this));
   }
 
   connectedCallback() {
@@ -33,7 +45,6 @@ class Channelcard extends HTMLElement {
   }
 
   render() {
-    console.log(this.channel);
     // if the object is not initialized, don't render
     if (Object.keys(this.channel).length === 0) return;
 
@@ -44,6 +55,21 @@ class Channelcard extends HTMLElement {
     shadow.querySelector('.channel-card__description-textarea').value =
       description;
     shadow.querySelector('.channel-card__type').textContent = type;
+  }
+
+  #changeDescription() {
+    const description = this.shadowRoot.querySelector(
+      '.channel-card__description-textarea'
+    ).value;
+
+    this.channel = { ...this.channel, description };
+    changeChannelDescription(this.channel.name, description);
+  }
+
+  #deleteChannel() {
+    deleteChannel(this.channel.name);
+    this.#channelElement.remove();
+    this.remove();
   }
 }
 
