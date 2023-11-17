@@ -49,12 +49,15 @@ class Channelcard extends HTMLElement {
     if (Object.keys(this.channel).length === 0) return;
 
     const { name, description, type } = this.channel;
+    const typeDisplay = type === 'public' ? 'Pubblico' : 'Privato';
 
     const shadow = this.shadowRoot;
     shadow.querySelector('.channel-card__name').textContent = name;
     shadow.querySelector('.channel-card__description-textarea').value =
       description;
-    shadow.querySelector('.channel-card__type').textContent = type;
+    shadow.querySelector(
+      '.channel-card__type'
+    ).textContent = `Canale ${typeDisplay}`;
   }
 
   #changeDescription() {
