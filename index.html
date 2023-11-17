@@ -13,11 +13,39 @@
       <navbar-c></navbar-c>
       <main>
         <h1>Profilo</h1>
+        <div class="profile">
+          <div class="profile__image">
+            <img alt="immagine di profilo" />
+          </div>
+          <div class="profile__info">
+            <h2 class="user-card__username">{user.username}</h2>
+            <p class="user-card__name">{user.firstname} {user.lastname}</p>
+            <p class="user-card__email">{user.email}</p>
+            <p class="user-card__type">{user.type}</p>
+            <p class="user-card__smm">{user.SMM}</p>
+            <p class="user-card__subscriptions">{user.subscriptions}</p>
+          </div>
+        </div>
       </main>
       <aside></aside>
     </div>
     <script type="module">
+      import { getMe } from './src/api/users.mjs';
       import {} from './src/components/navbar/navbar.mjs';
+
+      const user = await getMe();
+
+      document.querySelector('.profile__image img').src = user.propic;
+      document.querySelector('.user-card__username').textContent =
+        user.username;
+      document.querySelector(
+        '.user-card__name'
+      ).textContent = `${user.firstname} ${user.lastname}`;
+      document.querySelector('.user-card__email').textContent = user.email;
+      document.querySelector('.user-card__type').textContent = user.type;
+      document.querySelector('.user-card__smm').textContent = user.SMM;
+      document.querySelector('.user-card__subscriptions').textContent =
+        user.subscriptions.join(', ');
     </script>
   </body>
 </html>
