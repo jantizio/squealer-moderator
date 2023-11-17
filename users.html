@@ -46,19 +46,12 @@
     <script type="module">
       import { getUsers } from './src/api/users.mjs';
       import { debounce } from './src/utils/debounce.mjs';
+      import { renderList } from './src/utils/renderList.mjs';
       import {} from './src/components/navbar/navbar.mjs';
       import {} from './src/components/user/user.mjs';
       import {} from './src/components/usercard/usercard.mjs';
 
-      const renderUserList = (users, container = '#users-list') => {
-        const usersList = document.querySelector(container);
-        usersList.innerHTML = '';
-        users.forEach((user) => {
-          const userComponent = document.createElement('user-c');
-          userComponent.user = user;
-          usersList.appendChild(userComponent);
-        });
-      };
+      const renderUserList = renderList('user-c', 'user', '#users-list');
 
       const users = await getUsers();
       renderUserList(users);

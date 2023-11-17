@@ -38,19 +38,16 @@
     <script type="module">
       import { getSqueals } from './src/api/squeals.mjs';
       import { debounce } from './src/utils/debounce.mjs';
+      import { renderList } from './src/utils/renderList.mjs';
       import {} from './src/components/navbar/navbar.mjs';
       import {} from './src/components/squeal/squeal.mjs';
       import {} from './src/components/squealcard/squealcard.mjs';
 
-      const renderSquealsList = (squeals, container = '#squeals-list') => {
-        const squealsList = document.querySelector(container);
-        squealsList.innerHTML = '';
-        squeals.forEach((squeal) => {
-          const squealComponent = document.createElement('squeal-c');
-          squealsList.appendChild(squealComponent);
-          squealComponent.squeal = squeal;
-        });
-      };
+      const renderSquealsList = renderList(
+        'squeal-c',
+        'squeal',
+        '#squeals-list'
+      );
 
       const squeals = await getSqueals();
       renderSquealsList(squeals);

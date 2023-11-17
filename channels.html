@@ -20,18 +20,15 @@
 
     <script type="module">
       import { getChannels } from './src/api/channels.mjs';
+      import { renderList } from './src/utils/renderList.mjs';
       import {} from './src/components/navbar/navbar.mjs';
       import {} from './src/components/channel/channel.mjs';
 
-      const renderChannelsList = (channels, container = '#channels-list') => {
-        const channelsList = document.querySelector(container);
-        channelsList.innerHTML = '';
-        channels.forEach((channel) => {
-          const channelComponent = document.createElement('channel-c');
-          channelComponent.channel = channel;
-          channelsList.appendChild(channelComponent);
-        });
-      };
+      const renderChannelsList = renderList(
+        'channel-c',
+        'channel',
+        '#channels-list'
+      );
 
       const channels = await getChannels();
       renderChannelsList(channels);
