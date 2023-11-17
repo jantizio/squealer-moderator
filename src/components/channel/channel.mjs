@@ -10,6 +10,16 @@ class Channel extends HTMLElement {
     shadow.innerHTML = html;
 
     this.channel = {};
+
+    shadow.querySelector('.container').addEventListener('click', () => {
+      const aside = document.querySelector('aside');
+      const existingCard = aside.querySelector('channelcard-c');
+      if (existingCard) existingCard.remove();
+      const newCard = document.createElement('channelcard-c');
+      aside.appendChild(newCard);
+      newCard.channel = this.channel;
+      newCard.channelElement = this;
+    });
   }
 
   connectedCallback() {
