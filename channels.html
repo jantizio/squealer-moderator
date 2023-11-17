@@ -15,11 +15,30 @@
         <h1>Canali</h1>
         <div id="channels-list"></div>
       </main>
-      <aside></aside>
+      <aside>
+        <section id="channel-creation">
+          <h2>Crea nuovo canale</h2>
+          <div>
+            <label for="name">Nome</label>
+            <input type="text" id="name" />
+          </div>
+
+          <label for="description">Descrizione</label>
+          <textarea id="description"></textarea>
+
+          <label for="type">Tipo</label>
+          <select id="type">
+            <option value="public">Pubblico</option>
+            <option value="private">Privato</option>
+          </select>
+
+          <button id="channel-creation__button">Crea</button>
+        </section>
+      </aside>
     </div>
 
     <script type="module">
-      import { getChannels } from './src/api/channels.mjs';
+      import { getChannels, addChannel } from './src/api/channels.mjs';
       import { renderList } from './src/utils/renderList.mjs';
       import {} from './src/components/navbar/navbar.mjs';
       import {} from './src/components/channel/channel.mjs';
@@ -33,6 +52,20 @@
 
       const channels = await getChannels();
       renderChannelsList(channels);
+
+      const channelCreationButton = document.querySelector(
+        '#channel-creation__button'
+      );
+
+      channelCreationButton.addEventListener('click', async () => {
+        const name = document.querySelector('#name').value;
+        const description = document.querySelector('#description').value;
+        const type = document.querySelector('#type').value;
+
+        const newChannelsList = await addChannel({ name, description, type });
+
+        renderChannelsList(newChannelsList);
+      });
     </script>
   </body>
 </html>

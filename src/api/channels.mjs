@@ -20,3 +20,9 @@ export async function deleteChannel(channelName) {
   channels.splice(channelIndex, 1);
   return channels;
 }
+
+export async function addChannel(channel) {
+  const channels = await getChannels();
+  channels.push(channel);
+  return channels;
+}
