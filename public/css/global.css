@@ -1,3 +1,4 @@
+/* Layout */
 #root {
   display: flex;
   height: 100vh;
@@ -18,6 +19,63 @@
   flex: 0 0 48%;
   overflow-y: hidden;
 }
+
+/* Lists and aside controls */
+
+.list-container {
+  width: 30vw;
+  margin: 0 auto;
+}
+
+.side-controls {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.side-controls h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 0 0 20px;
+}
+
+.side-controls div {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.side-controls div:last-child {
+  margin-bottom: 0;
+}
+
+.side-controls label {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.side-controls input,
+.side-controls select,
+.side-controls textarea {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.side-controls button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* Utility style */
 
 .hidden {
   display: none;

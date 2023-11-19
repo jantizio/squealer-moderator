@@ -6,7 +6,6 @@
     <link rel="icon" type="image/svg+xml" href="public/vulture.svg" />
     <link rel="stylesheet" href="public/modern-normalize.min.css" />
     <link rel="stylesheet" href="public/css/global.css" />
-    <link rel="stylesheet" href="public/css/users.css" />
     <title>Moderator Dashboard</title>
   </head>
   <body>
@@ -14,18 +13,18 @@
       <navbar-c></navbar-c>
       <main>
         <h1>Utenti</h1>
-        <div id="users-list"></div>
+        <div class="list-container"></div>
       </main>
       <aside>
-        <div id="filter-section">
+        <section class="side-controls">
           <h2>Filtri</h2>
           <div>
-            <label for="name-filter">Nome</label>
-            <input type="text" id="name-filter" name="name-filter" />
+            <label for="name">Nome</label>
+            <input type="text" id="name" />
           </div>
           <div>
-            <label for="type-filter">Tipo</label>
-            <select id="type-filter" name="type-filter">
+            <label for="type">Tipo</label>
+            <select id="type">
               <option value="qualunque" selected>Qualunque</option>
               <option value="standard">Standard</option>
               <option value="professional">Professionista</option>
@@ -33,13 +32,13 @@
             </select>
           </div>
           <div>
-            <label for="popularity-filter">Popolarità</label>
-            <select id="popularity-filter" name="popularity-filter">
+            <label for="popularity">Popolarità</label>
+            <select id="popularity">
               <option value="decrescente" selected>Decrescente</option>
               <option value="crescente">Crescente</option>
             </select>
           </div>
-        </div>
+        </section>
       </aside>
     </div>
 
@@ -51,15 +50,15 @@
       import {} from './src/components/user/user.mjs';
       import {} from './src/components/usercard/usercard.mjs';
 
-      const renderUserList = renderList('user-c', 'user', '#users-list');
+      const renderUserList = renderList('user-c', 'user', '.list-container');
 
       const users = await getUsers();
       renderUserList(users);
 
-      const nameFilter = document.querySelector('#name-filter');
-      const typeFilter = document.querySelector('#type-filter');
+      const nameFilter = document.querySelector('#name');
+      const typeFilter = document.querySelector('#type');
       // TODO: implement popularity filter
-      const popularityFilter = document.querySelector('#popularity-filter');
+      const popularityFilter = document.querySelector('#popularity');
 
       nameFilter.addEventListener(
         'input',
