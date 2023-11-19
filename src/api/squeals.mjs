@@ -5,7 +5,7 @@ export async function getSqueals(
   receivers = undefined,
   date = undefined
 ) {
-  const squeals = await faxios.get("/db/squeals.json");
+  const squeals = await faxios.get("/squeals.json");
 
   if (author) {
     return squeals.filter((squeal) => squeal.author.includes(author));

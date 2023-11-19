@@ -1,4 +1,4 @@
-import { baseUrl } from '../config/index.mjs';
+import { apiUrl } from '../config/index.mjs';
 
 export const faxios = {
   get,
@@ -49,7 +49,7 @@ function _delete(url) {
 // helper functions
 
 async function makeRequest(url, requestOptions) {
-  const response = await fetch(`${baseUrl}${url}`, requestOptions);
+  const response = await fetch(`${apiUrl}${url}`, requestOptions);
   return handleResponse(response);
 }
 

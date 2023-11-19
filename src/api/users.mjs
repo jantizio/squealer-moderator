@@ -5,7 +5,7 @@ export async function getUsers(
   type = undefined,
   popularity = undefined
 ) {
-  const users = await faxios.get("/db/users.json");
+  const users = await faxios.get("/users.json");
   if (username) {
     return users.filter((user) => user.username.includes(username));
   }
@@ -17,7 +17,7 @@ export async function getUsers(
 }
 
 export async function getMe() {
-  const users = await faxios.get("/db/users.json");
+  const users = await getUsers();
   return users[3];
 }
 

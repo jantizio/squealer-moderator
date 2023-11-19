@@ -1,1 +1,2 @@
-export const baseUrl = 'http://localhost:5500';
+export const apiUrl = 'http://localhost:5500/db';
+export const appUrl = "";
