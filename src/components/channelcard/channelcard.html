@@ -1,16 +1,22 @@
 <link rel="stylesheet" href="public/modern-normalize.min.css" />
 <link rel="stylesheet" href="src/components/channelcard/channelcard.css" />
 <div class="channel-card">
-  <h2 class="channel-card__name">{{name}}</h2>
-  <p class="channel-card__type">{{type}}</p>
-  <label for="description" class="channel-card__description-label"
-    >Descrizione</label
-  >
-  <textarea id="description" class="channel-card__description-textarea">
+  <div class="channel-card__container">
+    <h2 class="channel-card__name">{{name}}</h2>
+    <p class="channel-card__type">{{type}}</p>
+  </div>
+
+  <div class="channel-card__change-description">
+    <label for="description" class="channel-card__description-label"
+      >Descrizione</label
+    >
+    <textarea id="description" class="channel-card__description-textarea">
         {{description}}
-    </textarea
-  >
-  <button class="channel-card__description-save">Salva</button>
-  <hr />
-  <button class="channel-card__delete">Eliminare il canale?</button>
+    </textarea>
+    <button class="channel-card__description-save">Salva</button>
+  </div>
+
+  <div class="channel-card__delete">
+    <button class="channel-card__delete-button">Eliminare il canale?</button>
+  </div>
 </div>

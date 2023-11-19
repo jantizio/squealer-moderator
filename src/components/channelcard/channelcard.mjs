@@ -22,7 +22,7 @@ class Channelcard extends HTMLElement {
       .addEventListener('click', this.#changeDescription.bind(this));
 
     shadow
-      .querySelector('.channel-card__delete')
+      .querySelector('.channel-card__delete-button')
       .addEventListener('click', this.#deleteChannel.bind(this));
   }
 
