@@ -11,7 +11,7 @@ class Channel extends HTMLElement {
 
     this.channel = {};
 
-    shadow.querySelector('.container').addEventListener('click', () => {
+    shadow.querySelector('.list-item').addEventListener('click', () => {
       const aside = document.querySelector('aside');
       const existingCard = aside.querySelector('channelcard-c');
       if (existingCard) existingCard.remove();

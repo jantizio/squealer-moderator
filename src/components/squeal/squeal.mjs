@@ -11,7 +11,7 @@ class Squeal extends HTMLElement {
 
     this.squeal = {};
 
-    shadow.querySelector('.container').addEventListener('click', () => {
+    shadow.querySelector('.list-item').addEventListener('click', () => {
       const aside = document.querySelector('aside');
       const existingCard = aside.querySelector('squealcard-c');
       if (existingCard) existingCard.remove();

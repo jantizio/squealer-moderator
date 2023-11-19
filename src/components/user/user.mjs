@@ -11,7 +11,7 @@ class User extends HTMLElement {
 
     this.user = {};
 
-    shadow.querySelector('.container').addEventListener('click', () => {
+    shadow.querySelector('.list-item').addEventListener('click', () => {
       const aside = document.querySelector('aside');
       const existingCard = aside.querySelector('usercard-c');
       if (existingCard) existingCard.remove();
