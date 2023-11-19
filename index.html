@@ -6,6 +6,7 @@
     <link rel="icon" type="image/svg+xml" href="public/vulture.svg" />
     <link rel="stylesheet" href="public/modern-normalize.min.css" />
     <link rel="stylesheet" href="public/css/global.css" />
+    <link rel="stylesheet" href="public/css/profile.css" />
     <title>Moderator Dashboard</title>
   </head>
   <body>
@@ -18,8 +19,8 @@
             <img alt="immagine di profilo" />
           </div>
           <div class="profile__info">
-            <h2 class="user-card__username">{user.username}</h2>
-            <p class="user-card__name">{user.firstname} {user.lastname}</p>
+            <h2 class="user-card__name">{user.firstname} {user.lastname}</h2>
+            <p class="user-card__username">{user.username}</p>
             <p class="user-card__email">{user.email}</p>
             <p class="user-card__type">{user.type}</p>
             <p class="user-card__smm">{user.SMM}</p>
@@ -43,9 +44,20 @@
       ).textContent = `${user.firstname} ${user.lastname}`;
       document.querySelector('.user-card__email').textContent = user.email;
       document.querySelector('.user-card__type').textContent = user.type;
-      document.querySelector('.user-card__smm').textContent = user.SMM;
-      document.querySelector('.user-card__subscriptions').textContent =
-        user.subscriptions.join(', ');
+
+      if (user.SMM)
+        document.querySelector(
+          '.user-card__smm'
+        ).textContent = `Social Media Manager: ${user.SMM}`;
+      else document.querySelector('.user-card__smm').classList.add('hidden');
+
+      if (user.subscriptions.length > 0)
+        document.querySelector('.user-card__subscriptions').textContent =
+          user.subscriptions.join(', ');
+      else
+        document
+          .querySelector('.user-card__subscriptions')
+          .classList.add('hidden');
     </script>
   </body>
 </html>
