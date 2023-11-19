@@ -14,17 +14,17 @@
       <navbar-c></navbar-c>
       <main>
         <h1>Profilo</h1>
-        <div class="profile">
-          <div class="profile__image">
+        <div id="profile">
+          <div id="profile__image">
             <img alt="immagine di profilo" />
           </div>
-          <div class="profile__info">
-            <h2 class="user-card__name">{user.firstname} {user.lastname}</h2>
-            <p class="user-card__username">{user.username}</p>
-            <p class="user-card__email">{user.email}</p>
-            <p class="user-card__type">{user.type}</p>
-            <p class="user-card__smm">{user.SMM}</p>
-            <p class="user-card__subscriptions">{user.subscriptions}</p>
+          <div id="profile__info">
+            <h2 id="name">{user.firstname} {user.lastname}</h2>
+            <p id="username">{user.username}</p>
+            <p id="email">{user.email}</p>
+            <p id="type">{user.type}</p>
+            <p id="smm">{user.SMM}</p>
+            <p id="subscriptions">{user.subscriptions}</p>
           </div>
         </div>
       </main>
@@ -36,28 +36,24 @@
 
       const user = await getMe();
 
-      document.querySelector('.profile__image img').src = user.propic;
-      document.querySelector('.user-card__username').textContent =
-        user.username;
+      document.querySelector('#profile__image img').src = user.propic;
+      document.querySelector('#username').textContent = user.username;
       document.querySelector(
-        '.user-card__name'
+        '#name'
       ).textContent = `${user.firstname} ${user.lastname}`;
-      document.querySelector('.user-card__email').textContent = user.email;
-      document.querySelector('.user-card__type').textContent = user.type;
+      document.querySelector('#email').textContent = user.email;
+      document.querySelector('#type').textContent = user.type;
 
       if (user.SMM)
         document.querySelector(
-          '.user-card__smm'
+          '#smm'
         ).textContent = `Social Media Manager: ${user.SMM}`;
-      else document.querySelector('.user-card__smm').classList.add('hidden');
+      else document.querySelector('#smm').classList.add('hidden');
 
       if (user.subscriptions.length > 0)
-        document.querySelector('.user-card__subscriptions').textContent =
+        document.querySelector('#subscriptions').textContent =
           user.subscriptions.join(', ');
-      else
-        document
-          .querySelector('.user-card__subscriptions')
-          .classList.add('hidden');
+      else document.querySelector('#subscriptions').classList.add('hidden');
     </script>
   </body>
 </html>
