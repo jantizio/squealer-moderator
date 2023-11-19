@@ -1,6 +1,7 @@
+import { faxios } from "../utils/faxios.mjs";
+
 export async function getChannels() {
-  const response = await fetch('../../db/channels.json');
-  const channels = await response.json();
+  const channels = await faxios.get("/db/channels.json")
   return channels;
 }
 

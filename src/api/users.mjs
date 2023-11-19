@@ -1,10 +1,11 @@
+import { faxios } from "../utils/faxios.mjs";
+
 export async function getUsers(
   username = undefined,
   type = undefined,
   popularity = undefined
 ) {
-  const response = await fetch('../../db/users.json');
-  const users = await response.json();
+  const users = await faxios.get("/db/users.json");
   if (username) {
     return users.filter((user) => user.username.includes(username));
   }
@@ -16,8 +17,7 @@ export async function getUsers(
 }
 
 export async function getMe() {
-  const response = await fetch('../../db/users.json');
-  const users = await response.json();
+  const users = await faxios.get("/db/users.json");
   return users[3];
 }
 

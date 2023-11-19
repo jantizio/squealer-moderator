@@ -1,6 +1,6 @@
 import { baseUrl } from '../config/index.mjs';
 
-export const axios = {
+export const faxios = {
   get,
   post,
   put,
