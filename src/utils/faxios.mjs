@@ -5,6 +5,7 @@ export const faxios = {
   post,
   put,
   delete: _delete,
+  patch,
 };
 
 const deaultOptions = {};
@@ -46,22 +47,31 @@ function _delete(url) {
   return makeRequest(url, requestOptions);
 }
 
+function patch(url, body) {
+  const requestOptions = {
+    ...deaultOptions,
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  };
+  return makeRequest(url, requestOptions);
+}
+
 // helper functions
 
 async function makeRequest(url, requestOptions) {
   const response = await fetch(`${apiUrl}${url}`, requestOptions);
-  return handleResponse(response);
+  return await handleResponse(response);
 }
 
-function handleResponse(response) {
-  return response.text().then((text) => {
-    const data = text && JSON.parse(text);
+async function handleResponse(response) {
+  const responseText = await response.text();
+  const data = responseText && JSON.parse(responseText);
 
-    if (!response.ok) {
-      const error = data?.message || response.statusText;
-      return Promise.reject(error);
-    }
+  if (!response.ok) {
+    const error = data?.message || response.statusText;
+    return Promise.reject(error);
+  }
 
-    return data;
-  });
+  return data;
 }

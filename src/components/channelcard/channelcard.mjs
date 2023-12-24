@@ -65,8 +65,7 @@ class Channelcard extends HTMLElement {
       '.channel-card__description-textarea'
     ).value;
 
-    this.channel = { ...this.channel, description };
-    changeChannelDescription(this.channel.name, description);
+    this.channel = changeChannelDescription(this.channel.name, description);
   }
 
   #deleteChannel() {

@@ -6,10 +6,9 @@ export async function getChannels() {
 }
 
 export async function changeChannelDescription(channelName, description) {
-  const channel = await faxios.put(
-    `/channels/${channelName}/description`,
-    description
-  );
+  const channel = await faxios.patch(`/channels/${channelName}/description`, {
+    description,
+  });
   return channel;
 }
 
