@@ -1,44 +1,31 @@
-import { faxios } from "../utils/faxios.mjs";
+import { faxios } from '../utils/faxios.mjs';
 
 export async function getSqueals(
   author = undefined,
-  receivers = undefined,
+  receiver = undefined,
   date = undefined
 ) {
-  const squeals = await faxios.get("/squeals.json");
+  const authorQuery = author ? `&author=${encodeURIComponent(author)}` : '';
+  const receiverQuery = receiver
+    ? `&receiver=${encodeURIComponent(receiver)}`
+    : '';
+  const dateQuery = date ? `&date=${encodeURIComponent(date)}` : '';
 
-  if (author) {
-    return squeals.filter((squeal) => squeal.author.includes(author));
-  }
-  if (receivers) {
-    return squeals.filter(
-      (squeal) =>
-        squeal.receivers.filter((receiver) => receiver.includes(receivers))
-          .length > 0
-    );
-  }
-
-  if (date) {
-    return squeals.filter((squeal) => new Date(squeal.datetime) >= date);
-  }
+  const squeals = await faxios.get(
+    `/squeals/?${authorQuery}${receiverQuery}${dateQuery}`
+  );
   return squeals;
 }
 
 export async function addReceiver(squealId, receiver) {
-  const squeals = await getSqueals();
-
-  const squeal = squeals.find((squeal) => squeal.id === squealId);
-  squeal.receivers.push(receiver);
-
+  const squeal = faxios.patch(`/squeals/${squealId}/receivers`, { receiver });
   return squeal;
 }
 
 export async function changeReactions(squealId, positive, negative) {
-  const squeals = await getSqueals();
-
-  const squeal = squeals.find((squeal) => squeal.id === squealId);
-  squeal.positive_reaction = positive;
-  squeal.negative_reaction = negative;
-
+  const squeal = await faxios.patch(`/squeals/${squealId}/reactions`, {
+    positive,
+    negative,
+  });
   return squeal;
 }

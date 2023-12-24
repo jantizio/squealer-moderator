@@ -104,11 +104,7 @@ class Squealcard extends HTMLElement {
       return;
     }
 
-    this.squeal = {
-      ...this.squeal,
-      receivers: [...this.squeal.receivers, receiver],
-    };
-    addReceiver(this.squeal.id, receiver);
+    this.squeal = addReceiver(this.squeal.id, receiver);
   }
 
   #saveReactions(event) {
@@ -124,12 +120,7 @@ class Squealcard extends HTMLElement {
       return;
     }
 
-    this.squeal = {
-      ...this.squeal,
-      positive_reaction: positive,
-      negative_reaction: negative,
-    };
-    changeReactions(this.squeal.id, positive, negative);
+    this.squeal = changeReactions(this.squeal.id, positive, negative);
   }
 }
 
