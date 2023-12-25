@@ -18,7 +18,7 @@ export async function getSqueals(
 }
 
 export async function addReceiver(squealId, receiver) {
-  const squeal = faxios.patch(`/squeals/${squealId}/receivers`, { receiver });
+  const squeal = await faxios.patch(`/squeals/${squealId}/receivers`, { receiver });
   return squeal;
 }
 

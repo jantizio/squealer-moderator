@@ -60,16 +60,16 @@ class Channelcard extends HTMLElement {
     ).textContent = `Canale ${typeDisplay}`;
   }
 
-  #changeDescription() {
+  async #changeDescription() {
     const description = this.shadowRoot.querySelector(
       '.channel-card__description-textarea'
     ).value;
 
-    this.channel = changeChannelDescription(this.channel.name, description);
+    this.channel = await changeChannelDescription(this.channel.name, description);
   }
 
-  #deleteChannel() {
-    deleteChannel(this.channel.name);
+  async #deleteChannel() {
+    await deleteChannel(this.channel.name);
     this.#channelElement.remove();
     this.remove();
   }
