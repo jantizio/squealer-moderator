@@ -1,34 +1,36 @@
-import { faxios } from "../utils/faxios.mjs";
+import { faxios } from '../utils/faxios.mjs';
 
 export async function getUsers(
   username = undefined,
   type = undefined,
   popularity = undefined
 ) {
-  const users = await faxios.get("/users.json");
-  if (username) {
-    return users.filter((user) => user.username.includes(username));
-  }
-  if (type) {
-    return users.filter((user) => user.type === type);
-  }
+  const usernameQuery = username
+    ? `&username=${encodeURIComponent(username)}`
+    : '';
+  const typeQuery = type ? `&type=${encodeURIComponent(type)}` : '';
+  const popularityQuery = popularity
+    ? `&popularity=${encodeURIComponent(popularity)}`
+    : '';
+
+  const users = await faxios.get(
+    `/users/?${usernameQuery}${typeQuery}${popularityQuery}`
+  );
 
   return users;
 }
 
 export async function getMe() {
-  const users = await getUsers();
-  return users[3];
+  const user = await faxios.get('/users/me');
+  return user;
 }
 
 export async function changeUserQuota(username, quota) {
-  const users = await getUsers();
-  const user = users.find((user) => user.username === username);
-  user.quota = quota;
+  const newQuota = await faxios.patch(`/users/${username}/quota`, { dailyQuota: quota });
+  return newQuota;
 }
 
 export async function changeBlockedStatus(username, blocked) {
-  const users = await getUsers();
-  const user = users.find((user) => user.username === username);
-  user.blocked = blocked;
+  const user = await faxios.patch(`/users/${username}/blocked`, { blocked });
+  return user;
 }

@@ -75,28 +75,24 @@ class Usercard extends HTMLElement {
     else
       shadow.querySelector('.user-card__subscriptions').classList.add('hidden');
 
-    shadow.querySelector('#giorno').value = quota.maxD;
-    shadow.querySelector('#settimana').value = quota.maxW;
-    shadow.querySelector('#mese').value = quota.maxM;
+    shadow.querySelector('#giorno').value = quota.maxD - quota.actualD;
+    shadow.querySelector('#max_giorno').textContent = `su ${quota.maxD}`;
 
     shadow.querySelector('#block-toggle').checked = blocked;
   }
 
-  #saveQuota(event) {
+  async #saveQuota(event) {
     event.preventDefault();
-    const shadow = this.shadowRoot;
-    const maxD = Number(shadow.querySelector('#giorno').value);
-    const maxW = Number(shadow.querySelector('#settimana').value);
-    const maxM = Number(shadow.querySelector('#mese').value);
-    this.user.quota = { ...this.user.quota, maxD, maxW, maxM };
-    changeUserQuota(this.user.username, this.user.quota);
+    const newDailyQuota =
+      this.user.quota.maxD -
+      Number(this.shadowRoot.querySelector('#giorno').value);
+    this.user.quota = await changeUserQuota(this.user.username, newDailyQuota);
   }
 
-  #toggleBlocked(event) {
+  async #toggleBlocked(event) {
     event.preventDefault();
     const blocked = this.shadowRoot.querySelector('#block-toggle').checked;
-    this.user = { ...this.user, blocked };
-    changeBlockedStatus(this.user.username, this.user.blocked);
+    this.user = await changeBlockedStatus(this.user.username, blocked);
   }
 }
 
