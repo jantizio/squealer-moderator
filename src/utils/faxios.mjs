@@ -1,77 +1,50 @@
 import { apiUrl } from '../config/index.mjs';
 
-export const faxios = {
-  get,
-  post,
-  put,
-  delete: _delete,
-  patch,
-};
+export const faxios = axios.create({
+  baseURL: apiUrl,
+  withCredentials: true,
+  headers: {
+    'Content-Type': 'application/json',
+  },
+});
 
-const deaultOptions = {};
+// create only one promise for the refresh token = avoid multiple refresh token calls
+let refreshPromise = null;
+const clearPromise = () => (refreshPromise = null);
 
-function get(url) {
-  const requestOptions = {
-    ...deaultOptions,
-    method: 'GET',
-  };
-  return makeRequest(url, requestOptions);
-}
+faxios.interceptors.response.use(
+  (response) => response.data,
+  async (error) => {
+    const prevRequest = error.config;
+    const errorMessage = error.response?.data;
+    const isTokenExpired =
+      errorPayloadCheck(errorMessage) &&
+      errorMessage.message.includes('Invalid token');
 
-function post(url, body) {
-  const requestOptions = {
-    ...deaultOptions,
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  };
-  return makeRequest(url, requestOptions);
-}
+    if (
+      error.response?.status === 401 &&
+      isTokenExpired &&
+      !prevRequest?.sent
+    ) {
+      prevRequest.sent = true;
 
-function put(url, body) {
-  const requestOptions = {
-    ...deaultOptions,
-    method: 'PUT',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  };
-  return makeRequest(url, requestOptions);
-}
+      if (!refreshPromise) {
+        refreshPromise = refreshAccessToken().finally(clearPromise);
+      }
 
-// prefixed with underscored because delete is a reserved word in javascript
-function _delete(url) {
-  const requestOptions = {
-    ...deaultOptions,
-    method: 'DELETE',
-  };
-  return makeRequest(url, requestOptions);
-}
+      await refreshPromise;
+      return faxios(prevRequest);
+    }
 
-function patch(url, body) {
-  const requestOptions = {
-    ...deaultOptions,
-    method: 'PATCH',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  };
-  return makeRequest(url, requestOptions);
-}
-
-// helper functions
-
-async function makeRequest(url, requestOptions) {
-  const response = await fetch(`${apiUrl}${url}`, requestOptions);
-  return await handleResponse(response);
-}
-
-async function handleResponse(response) {
-  const responseText = await response.text();
-  const data = responseText && JSON.parse(responseText);
-
-  if (!response.ok) {
-    const error = data?.message || response.statusText;
     return Promise.reject(error);
   }
+);
 
-  return data;
+const refreshAccessToken = async () => {
+  const response = await faxios.post('/token/refresh');
+  return response;
+};
+
+function errorPayloadCheck(data) {
+  return data instanceof Object && 'message' in data;
 }
