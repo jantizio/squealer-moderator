@@ -6,6 +6,7 @@
     <link rel="icon" type="image/svg+xml" href="public/vulture.svg" />
     <link rel="stylesheet" href="public/modern-normalize.min.css" />
     <link rel="stylesheet" href="public/css/global.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Moderator Dashboard</title>
   </head>
   <body>
@@ -34,8 +35,8 @@
           <div>
             <label for="popularity">Popolarità</label>
             <select id="popularity">
-              <option value="decrescente" selected>Decrescente</option>
-              <option value="crescente">Crescente</option>
+              <option value="descending" selected>Decrescente</option>
+              <option value="ascending">Crescente</option>
             </select>
           </div>
         </section>
@@ -57,28 +58,21 @@
 
       const nameFilter = document.querySelector('#name');
       const typeFilter = document.querySelector('#type');
-      // TODO: implement popularity filter
       const popularityFilter = document.querySelector('#popularity');
 
-      nameFilter.addEventListener(
-        'input',
-        debounce(async (event) => {
-          const name = event.target.value;
-          const users = await getUsers(name);
+      const handleFilter = async () => {
+        const username = nameFilter.value;
+        const type =
+          typeFilter.value === 'qualunque' ? undefined : typeFilter.value;
+        const popularity = popularityFilter.value;
 
-          renderUserList(users);
-        })
-      );
-
-      typeFilter.addEventListener('change', async (event) => {
-        let type = event.target.value;
-        if (type === 'qualunque') {
-          type = undefined;
-        }
-
-        const users = await getUsers(undefined, type);
+        const users = await getUsers(username, type, popularity);
         renderUserList(users);
-      });
+      };
+
+      nameFilter.addEventListener('input', debounce(handleFilter));
+      typeFilter.addEventListener('change', handleFilter);
+      popularityFilter.addEventListener('change', handleFilter);
     </script>
   </body>
 </html>

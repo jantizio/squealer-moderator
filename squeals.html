@@ -6,6 +6,7 @@
     <link rel="icon" type="image/svg+xml" href="public/vulture.svg" />
     <link rel="stylesheet" href="public/modern-normalize.min.css" />
     <link rel="stylesheet" href="public/css/global.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <title>Moderator Dashboard</title>
   </head>
   <body>
@@ -27,8 +28,8 @@
             <input type="date" id="date" />
           </div>
           <div>
-            <label for="receivers">Destinatario</label>
-            <input type="text" id="receivers" />
+            <label for="receiver">Destinatario</label>
+            <input type="text" id="receiver" />
           </div>
         </section>
       </aside>
@@ -51,36 +52,22 @@
       const squeals = await getSqueals();
       renderSquealsList(squeals);
 
+      const handleFilter = async (event) => {
+        const author = authorFilter.value;
+        const receiver = receiverFilter.value;
+        const date = dateFilter.value;
+
+        const squeals = await getSqueals(author, receiver, date);
+        renderSquealsList(squeals);
+      };
+
       const authorFilter = document.querySelector('#author');
       const dateFilter = document.querySelector('#date');
-      const receiversFilter = document.querySelector('#receivers');
+      const receiverFilter = document.querySelector('#receiver');
 
-      authorFilter.addEventListener(
-        'input',
-        debounce(async (event) => {
-          const author = event.target.value;
-          const squeals = await getSqueals(author);
-          console.log(author);
-
-          renderSquealsList(squeals);
-        })
-      );
-
-      dateFilter.addEventListener('change', async (event) => {
-        const date = new Date(event.target.value);
-        const squeals = await getSqueals(undefined, undefined, date);
-        renderSquealsList(squeals);
-      });
-
-      receiversFilter.addEventListener(
-        'input',
-        debounce(async (event) => {
-          const receivers = event.target.value;
-          const squeals = await getSqueals(undefined, receivers);
-
-          renderSquealsList(squeals);
-        })
-      );
+      authorFilter.addEventListener('input', debounce(handleFilter));
+      dateFilter.addEventListener('change', handleFilter);
+      receiverFilter.addEventListener('input', debounce(handleFilter));
     </script>
   </body>
 </html>

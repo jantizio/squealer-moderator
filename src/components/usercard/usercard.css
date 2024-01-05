@@ -66,14 +66,16 @@
   justify-content: space-between;
   align-items: center;
   gap: 5px;
-  margin-bottom: 10px;
 }
 
 .user-card__quota-input input {
-  width: 100px;
+  width: 150px;
   padding: 5px;
   border: 1px solid #ddd;
   border-radius: 5px;
+}
+.user-card__quota-input p {
+  margin: 0;
 }
 
 .user-card__quota-save {

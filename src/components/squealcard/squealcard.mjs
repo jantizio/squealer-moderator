@@ -94,7 +94,7 @@ class Squealcard extends HTMLElement {
       category.join(', ');
   }
 
-  #addReceiver(event) {
+  async #addReceiver(event) {
     event.preventDefault();
     const receiver = this.shadowRoot.querySelector('#receiver').value;
     // validate receiver, starts with @ or § or #
@@ -104,14 +104,10 @@ class Squealcard extends HTMLElement {
       return;
     }
 
-    this.squeal = {
-      ...this.squeal,
-      receivers: [...this.squeal.receivers, receiver],
-    };
-    addReceiver(this.squeal.id, receiver);
+    this.squeal = await addReceiver(this.squeal.id, receiver);
   }
 
-  #saveReactions(event) {
+  async #saveReactions(event) {
     event.preventDefault();
     const shadow = this.shadowRoot;
 
@@ -124,12 +120,7 @@ class Squealcard extends HTMLElement {
       return;
     }
 
-    this.squeal = {
-      ...this.squeal,
-      positive_reaction: positive,
-      negative_reaction: negative,
-    };
-    changeReactions(this.squeal.id, positive, negative);
+    this.squeal = await changeReactions(this.squeal.id, positive, negative);
   }
 }
 
