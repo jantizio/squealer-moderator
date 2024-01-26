@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="public/modern-normalize.min.css" />
     <link rel="stylesheet" href="public/css/global.css" />
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.5/dist/js.cookie.min.js"
+      integrity="sha256-WCzAhd2P6gRJF9Hv3oOOd+hFJi/QJbv+Azn4CGB8gfY="
+      crossorigin="anonymous"
+    ></script>
     <title>Moderator Dashboard</title>
   </head>
   <body>
@@ -42,6 +47,8 @@
       import {} from './src/components/navbar/navbar.mjs';
       import {} from './src/components/squeal/squeal.mjs';
       import {} from './src/components/squealcard/squealcard.mjs';
+
+      import {} from './src/utils/checkAuth.mjs';
 
       const renderSquealsList = renderList(
         'squeal-c',

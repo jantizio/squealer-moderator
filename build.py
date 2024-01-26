@@ -21,7 +21,7 @@ if not os.path.exists(destination_dir):
     os.makedirs(destination_dir)
 
 # Copy the db, public, and src folders to the destination directory
-copy_tree("db")
+# copy_tree("db")
 copy_tree("public")
 copy_tree("src")
 
